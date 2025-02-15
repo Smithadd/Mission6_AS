@@ -1,8 +1,9 @@
 ﻿@{
     ViewData["Title"] = "Add a New Movie";
-
 }
+
 @model Mission6.Models.Application
+
 <style>
     body {
         font-family: 'Arial', sans-serif;
@@ -60,21 +61,23 @@
         }
 </style>
 
-
 <div class="container">
     <h1>Add a New Movie</h1>
-    <form asp-action="AddMovie" asp-controller="Movies" method="post">
+    <form asp-action="AddMovie" asp-controller="Home" method="post">
         <!-- Title (Required) -->
         <label asp-for="Title"></label>
-        <input asp-for="Title" class="form-control" required>
+        <input asp-for="Title" class="form-control" required />
+        <span asp-validation-for="Title" class="text-danger"></span>
 
         <!-- Director (Required) -->
         <label asp-for="Director"></label>
-        <input asp-for="Director" class="form-control" required>
+        <input asp-for="Director" class="form-control" required />
+        <span asp-validation-for="Director" class="text-danger"></span>
 
         <!-- Year (Required) -->
         <label asp-for="Year"></label>
-        <input asp-for="Year" class="form-control" type="number" min="1900" max="2099" required>
+        <input asp-for="Year" class="form-control" type="number" min="1900" max="2099" required />
+        <span asp-validation-for="Year" class="text-danger"></span>
 
         <!-- Rating (Dropdown) -->
         <label asp-for="Rating"></label>
@@ -84,24 +87,27 @@
             <option value="PG-13">PG-13</option>
             <option value="R">R</option>
         </select>
+        <span asp-validation-for="Rating" class="text-danger"></span>
 
         <!-- Edited (Yes/No) -->
         <label asp-for="Edited"></label>
         <div class="radio-group">
-            <label><input asp-for="Edited" type="radio" value="true"> Yes</label>
-            <label><input asp-for="Edited" type="radio" value="false"> No</label>
+            <label><input asp-for="Edited" type="radio" value="true" /> Yes</label>
+            <label><input asp-for="Edited" type="radio" value="false" /> No</label>
         </div>
+        <span asp-validation-for="Edited" class="text-danger"></span>
 
         <!-- Lent To (Optional) -->
         <label asp-for="LentTo"></label>
-        <input asp-for="LentTo" class="form-control">
+        <input asp-for="LentTo" class="form-control" />
+        <span asp-validation-for="LentTo" class="text-danger"></span>
 
         <!-- Notes (Optional, Max 25 Characters) -->
         <label asp-for="Notes"></label>
         <textarea asp-for="Notes" class="form-control" maxlength="25"></textarea>
+        <span asp-validation-for="Notes" class="text-danger"></span>
 
         <!-- Submit Button -->
         <button type="submit">Add Movie</button>
     </form>
-
 </div>

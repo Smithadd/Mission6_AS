@@ -31,16 +31,16 @@ namespace Mission6.Controllers
 
         // Handle form submission (POST)
         [HttpPost]
-        public IActionResult AddMovie(Application model)
+        public IActionResult AddMovie(Application response)
         {
             if (ModelState.IsValid)
             {
-                //_context.Movies.Add(model);  // Save movie to database
-                //_context.SaveChanges(); //commit changes
-                //return RedirectToAction("Index"); // Redirect to movie list page
+                _context.Movies.Add(response);  // Save movie to database
+                _context.SaveChanges(); //commit changes
+                return RedirectToAction("Index"); // Redirect to movie list page
             }
 
-            return View("AddMovie", model);  // Re-render the form with validation errors
+            return View("AddMovie");
         }
 
 
